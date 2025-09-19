@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
-<h2 style="margin:0 0 14px 0">Panell</h2>
+<h2 style="margin:0 0 14px 0">Panel</h2>
 
 <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem">
   
