@@ -87,6 +87,12 @@ if (session_status() === PHP_SESSION_NONE) { session_start(); }
         <i class="fa-solid fa-user"></i> <span>Usuarios</span>
       </a>
       <?php endif; ?>
+      <?php if (!empty($_SESSION['user']) && ($_SESSION['user']['rol'] ?? '')==='admin'): ?>
+  <a href="<?= BASE_URL ?>?c=clienteapi&a=index" class="<?= ($_GET['c']??'')==='clienteapi'?'active':'' ?>">
+    <i class="fa-solid fa-building"></i> <span>Clientes</span>
+  </a>
+<?php endif; ?>
+
       <div style="margin-top:auto;border-top:1px solid #1f2937;padding-top:12px">
         <a href="<?= BASE_URL ?>?c=auth&a=logout">
           <i class="fa-solid fa-right-from-bracket"></i> <span>Salir</span>

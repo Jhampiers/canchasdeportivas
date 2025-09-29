@@ -10,6 +10,8 @@ $controllers = [
     'cancha'    => __DIR__ . '/src/control/CanchaController.php',
     'dashboard' => __DIR__ . '/src/control/DashboardController.php',
     'usuario'   => __DIR__ . '/src/control/UsuarioController.php',
+    'clienteapi'=> __DIR__ . '/src/control/ClienteApiController.php',
+
 ];
 
 if (!isset($controllers[$c])) { http_response_code(404); exit('Controlador no encontrado'); }
