@@ -75,11 +75,11 @@
           <td><?= htmlspecialchars($cl['correo']) ?></td>
           <td><span class="cap-badge <?= $badge ?>"><?= htmlspecialchars($cl['estado']) ?></span></td>
           <td><?= htmlspecialchars($cl['fecha_registro']) ?></td>
-          <td>
-            <a class="cap-btn" href="<?= BASE_URL ?>?c=clienteapi&a=edit&id=<?= $cl['id'] ?>">Editar</a>
-            <a class="cap-btn danger" onclick="return confirm('¿Eliminar cliente?')"
-               href="<?= BASE_URL ?>?c=clienteapi&a=delete&id=<?= $cl['id'] ?>">Eliminar</a>
-          </td>
+        <td>
+  <a class="cap-btn" href="<?= BASE_URL ?>?c=clienteapi&a=show&id=<?= (int)$cl['id'] ?>">Ver</a>
+  <a class="cap-btn" href="<?= BASE_URL ?>?c=clienteapi&a=edit&id=<?= (int)$cl['id'] ?>">Editar</a>
+</td>
+
         </tr>
       <?php endforeach; ?>
     </tbody>
