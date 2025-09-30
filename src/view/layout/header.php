@@ -92,6 +92,12 @@ if (session_status() === PHP_SESSION_NONE) { session_start(); }
     <i class="fa-solid fa-building"></i> <span>Clientes</span>
   </a>
 <?php endif; ?>
+<?php if (!empty($_SESSION['user'])): ?>
+  <a href="<?= BASE_URL ?>?c=token&a=index" class="<?= (($_GET['c'] ?? '')==='token')?'active':'' ?>">
+    <i class="fa-solid fa-key"></i> <span>Tokens</span>
+  </a>
+<?php endif; ?>
+
 
       <div style="margin-top:auto;border-top:1px solid #1f2937;padding-top:12px">
         <a href="<?= BASE_URL ?>?c=auth&a=logout">

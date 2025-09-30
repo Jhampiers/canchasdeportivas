@@ -11,6 +11,7 @@ $controllers = [
     'dashboard' => __DIR__ . '/src/control/DashboardController.php',
     'usuario'   => __DIR__ . '/src/control/UsuarioController.php',
     'clienteapi'=> __DIR__ . '/src/control/ClienteApiController.php',
+    'token'      => __DIR__ . '/src/control/TokenController.php', 
 
 ];
 
