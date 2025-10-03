@@ -54,7 +54,7 @@
           ?>
           <tr data-text="<?= htmlspecialchars($text, ENT_QUOTES, 'UTF-8') ?>" data-estado="<?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8') ?>">
             <td><?= (int)$t['id'] ?></td>
-            <td><?= htmlspecialchars($t['razon_social']).' — '.htmlspecialchars($t['ruc']) ?></td>
+            <td><?= htmlspecialchars($t['razon_social']) ?></td>
             <td><code><?= htmlspecialchars($t['token']) ?></code></td>
             <td><span class="cap-badge <?= $badge ?>"><?= htmlspecialchars($t['estado']) ?></span></td>
             <td><?= htmlspecialchars($t['fecha_reg']) ?></td>

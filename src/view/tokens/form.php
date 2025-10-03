@@ -31,7 +31,7 @@
       <div class="grid">
         <div class="full">
           <label>Cliente *</label>
-          <select name="id_client_api" required>
+          <select name="id_client_api" id="id_client_api" required>
             <option value="">-- Seleccione --</option>
             <?php foreach ($clients as $c): ?>
               <?php $sel = (!empty($token['id_client_api']) && (int)$token['id_client_api']===(int)$c['id']) ? 'selected':''; ?>
@@ -71,9 +71,10 @@
 
 <script>
   function genToken(){
+    let id= document.getElementById('id_client_api').value;
     const rnd = crypto.getRandomValues(new Uint8Array(16));
     const hex = [...rnd].map(b=>b.toString(16).padStart(2,'0')).join('');
-    document.getElementById('tokVal').value = 'tok_' + hex;
+    document.getElementById('tokVal').value = 'tok_' + hex+'-'+id;
   }
 </script>
 

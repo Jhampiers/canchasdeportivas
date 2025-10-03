@@ -49,4 +49,10 @@ class ClienteApi {
     $st = Conexion::getConexion()->prepare("DELETE FROM client_api WHERE id=?");
     return $st->execute([$id]);
   }
+
+  //clase
+  /** public function buscarCanchaByDenominacion($data){
+    $arrRespuesta = array();
+    $sql = $this->conexion->query("select")
+  }*/
 }

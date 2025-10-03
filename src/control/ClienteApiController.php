@@ -140,6 +140,24 @@ class ClienteApiController
         }
         require __DIR__ . '/../view/cliente_api/show.php';
     }
+    //clase
+    /** if (tipo="verCanchaApiByNombre") {
+        $token_arr = explode("-",$token);
+        $id_cliente = $token_arr[2];
+        $arr_cliente = $objApi->buscarclienteById($id_cliente);
+        if ($arr_cliente->estado) {
+
+            $data = $_POST['data'];
+            arr_canchas = $objApi->buscarCanchaByDenominacion($data);
+            arr_Respuesta = array('status'=>true, 'msg'=>'','contenido'=>$arr_bienes);
+
+        }else{
+            $arr_Respuesta = array('status' => false,'msg'=>'Error, cliente no activo.');
+        }
+        echo json_encode($arr_Respuesta);
+         
+         
+    } */
 }
 
 
