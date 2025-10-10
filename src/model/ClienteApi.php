@@ -50,10 +50,17 @@ class ClienteApi {
     return $st->execute([$id]);
   }
 
-  //clase
-  /** public function buscarCanchaByDenominacion($data){
-    $arrRespuesta = array();
-    $sql = $this->conexion->query("select")
-  }*/
+  // clase
+  public function buscarCanchaByDenominacion($data)
+  {
+      $data = trim($data);
+      $pdo = Conexion::getConexion();
 
+      $sql = "SELECT * FROM canchas WHERE denominacion LIKE ?";
+      $st = $pdo->prepare($sql);
+      $like = "%{$data}%";
+      $st->execute([$like]);
+
+      return $st->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

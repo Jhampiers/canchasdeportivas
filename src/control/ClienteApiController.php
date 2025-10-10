@@ -3,23 +3,15 @@ require_once __DIR__ . '/../model/ClienteApi.php';
 
 class ClienteApiController
 {
-    /**
-     * Requiere sesión iniciada (sirve para vistas de solo lectura, como show).
-     */
     private function requireAuth()
     {
-        if (session_status() !== PHP_SESSION_ACTIVE) {
-            session_start();
-        }
+        if (session_status() !== PHP_SESSION_ACTIVE) session_start();
         if (empty($_SESSION['user'])) {
             header('Location: ' . BASE_URL . '?c=auth&a=loginForm');
             exit;
         }
     }
 
-    /**
-     * Requiere sesión + rol admin (gestión completa).
-     */
     private function requireAdmin()
     {
         $this->requireAuth();
@@ -30,9 +22,6 @@ class ClienteApiController
         }
     }
 
-    /**
-     * Listado de clientes (solo admin).
-     */
     public function index()
     {
         $this->requireAdmin();
@@ -40,32 +29,24 @@ class ClienteApiController
         require __DIR__ . '/../view/cliente_api/index.php';
     }
 
-    /**
-     * Formulario de nuevo cliente (solo admin).
-     */
     public function create()
     {
         $this->requireAdmin();
         $cliente = [
-            'id'            => null,
-            'ruc'           => '',
-            'razon_social'  => '',
-            'telefono'      => '',
-            'correo'        => '',
-            'estado'        => 'Activo'
+            'id' => null,
+            'ruc' => '',
+            'razon_social' => '',
+            'telefono' => '',
+            'correo' => '',
+            'estado' => 'Activo'
         ];
         $isEdit = false;
         require __DIR__ . '/../view/cliente_api/form.php';
     }
 
-    /**
-     * Guarda un nuevo cliente (solo admin).
-     */
     public function store()
     {
         $this->requireAdmin();
-
-        // Validación mínima
         if (empty($_POST['ruc']) || empty($_POST['razon_social'])) {
             if (session_status() !== PHP_SESSION_ACTIVE) session_start();
             $_SESSION['error'] = 'RUC y Razón social son obligatorios';
@@ -77,9 +58,6 @@ class ClienteApiController
         header('Location: ' . BASE_URL . '?c=clienteapi&a=index');
     }
 
-    /**
-     * Formulario de edición (solo admin).
-     */
     public function edit()
     {
         $this->requireAdmin();
@@ -94,14 +72,10 @@ class ClienteApiController
         require __DIR__ . '/../view/cliente_api/form.php';
     }
 
-    /**
-     * Actualiza cliente (solo admin).
-     */
     public function update()
     {
         $this->requireAdmin();
         $id = (int)($_POST['id'] ?? 0);
-
         if (empty($_POST['ruc']) || empty($_POST['razon_social'])) {
             if (session_status() !== PHP_SESSION_ACTIVE) session_start();
             $_SESSION['error'] = 'RUC y Razón social son obligatorios';
@@ -113,10 +87,6 @@ class ClienteApiController
         header('Location: ' . BASE_URL . '?c=clienteapi&a=index');
     }
 
-    /**
-     * Elimina cliente (solo admin). En la vista ya no mostramos "Eliminar".
-     * Si no quieres permitirlo en absoluto, puedes comentar o borrar este método.
-     */
     public function delete()
     {
         $this->requireAdmin();
@@ -125,12 +95,9 @@ class ClienteApiController
         header('Location: ' . BASE_URL . '?c=clienteapi&a=index');
     }
 
-    /**
-     * Ver detalle de un cliente (requiere sesión, puede ver invitado).
-     */
     public function show()
     {
-        $this->requireAuth(); // cambia a requireAdmin() si quieres que solo admin pueda ver
+        $this->requireAuth();
         $id = (int)($_GET['id'] ?? 0);
         $cliente = ClienteApi::find($id);
         if (!$cliente) {
@@ -140,25 +107,37 @@ class ClienteApiController
         }
         require __DIR__ . '/../view/cliente_api/show.php';
     }
-    //clase
-    /** if (tipo="verCanchaApiByNombre") {
-        $token_arr = explode("-",$token);
-        $id_cliente = $token_arr[2];
-        $arr_cliente = $objApi->buscarclienteById($id_cliente);
-        if ($arr_cliente->estado) {
 
-            $data = $_POST['data'];
-            arr_canchas = $objApi->buscarCanchaByDenominacion($data);
-            arr_Respuesta = array('status'=>true, 'msg'=>'','contenido'=>$arr_bienes);
+    // clase
+    public function verCanchaApiByNombre()
+    {
+        $tipo = $_POST['tipo'] ?? '';
+        $token = $_POST['token'] ?? '';
+        $objApi = new ClienteApi();
 
-        }else{
-            $arr_Respuesta = array('status' => false,'msg'=>'Error, cliente no activo.');
+        if ($tipo == "verCanchaApiByNombre") {
+            $token_arr = explode("-", $token);
+            $id_cliente = $token_arr[2] ?? null;
+            $arr_cliente = $objApi->buscarclienteById($id_cliente);
+
+            if ($arr_cliente && $arr_cliente->estado) {
+                $data = $_POST['data'] ?? '';
+                $arr_canchas = $objApi->buscarCanchaByDenominacion($data);
+                $arr_Respuesta = array(
+                    'status' => true,
+                    'msg' => '',
+                    'contenido' => $arr_canchas
+                );
+            } else {
+                $arr_Respuesta = array(
+                    'status' => false,
+                    'msg' => 'Error, cliente no activo.'
+                );
+            }
+
+            echo json_encode($arr_Respuesta);
         }
-        echo json_encode($arr_Respuesta);
-         
-         
-    } */
-
+    }
 }
 
 
