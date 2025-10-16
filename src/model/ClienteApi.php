@@ -50,17 +50,22 @@ class ClienteApi {
     return $st->execute([$id]);
   }
 
-  // clase
-  public function buscarCanchaByDenominacion($data)
-  {
-      $data = trim($data);
-      $pdo = Conexion::getConexion();
+  // Nuevo
+ // Buscar canchas por nombre (para API)
+  public static function buscarCanchasPorNombre(string $nombre): array {
+    $st = Conexion::getConexion()->prepare("
+      SELECT * FROM canchas WHERE nombre LIKE ? ORDER BY nombre
+    ");
+    $st->execute(['%' . trim($nombre) . '%']);
+    return $st->fetchAll();
+  }
 
-      $sql = "SELECT * FROM canchas WHERE denominacion LIKE ?";
-      $st = $pdo->prepare($sql);
-      $like = "%{$data}%";
-      $st->execute([$like]);
-
-      return $st->fetchAll(PDO::FETCH_ASSOC);
+  // Buscar canchas por ubicación (para API)
+  public static function buscarCanchasPorUbicacion(string $ubicacion): array {
+    $st = Conexion::getConexion()->prepare("
+      SELECT * FROM canchas WHERE ubicacion LIKE ? ORDER BY nombre
+    ");
+    $st->execute(['%' . trim($ubicacion) . '%']);
+    return $st->fetchAll();
   }
 }
