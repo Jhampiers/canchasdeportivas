@@ -183,6 +183,6 @@ class ConsumoApiController
         // Obtener todos los tokens activos para el formulario
         $tokens = Token::all();
         
-        require __DIR__ . '/../view/consumo_api/test.php';
+        require __DIR__ . '/../view/consumoapi/test.php';
     }
 }

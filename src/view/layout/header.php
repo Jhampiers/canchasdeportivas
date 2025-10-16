@@ -98,7 +98,7 @@ if (session_status() === PHP_SESSION_NONE) { session_start(); }
   </a>
 <?php endif; ?>
 <?php if (!empty($_SESSION['user'])): ?>
-  <a href="<?= BASE_URL ?>?c=consumoApiController&a=vistaTest" class="<?= (($_GET['c'] ?? '')==='consumoApiController')?'active':'' ?>">
+  <a href="<?= BASE_URL ?>?c=consumoapi&a=vistaTest" class="<?= (($_GET['c'] ?? '')==='consumoapi')?'active':'' ?>">
     <i class="fa-solid fa-vial"></i> <span>Consumo API</span>
 </a>
 <?php endif; ?>
