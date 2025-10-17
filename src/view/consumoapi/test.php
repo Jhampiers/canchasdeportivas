@@ -1,11 +1,8 @@
 <?php require_once __DIR__ . '/../layout/header.php'; ?>
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4">🧪 Prueba de Consumo API</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="<?= BASE_URL ?>?c=dashboard">Dashboard</a></li>
-        <li class="breadcrumb-item active">Consumo API</li>
-    </ol>
+    <h1 class="mt-4">Consumo API</h1>
+   
 
     <div class="row">
         <div class="col-xl-6">
@@ -81,31 +78,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-4">
-                <div class="card-header bg-info text-white">
-                    <i class="fas fa-info-circle me-1"></i>
-                    Información de uso
-                </div>
-                <div class="card-body">
-                    <h6>Tipos de operación disponibles:</h6>
-                    <ul>
-                        <li><strong>listar_canchas:</strong> Retorna todas las canchas registradas</li>
-                        <li><strong>listar_canchas_disponibles:</strong> Retorna solo canchas con estado "Disponible"</li>
-                        <li><strong>buscar_cancha_nombre:</strong> Busca canchas por nombre (requiere dato)</li>
-                        <li><strong>buscar_cancha_ubicacion:</strong> Busca canchas por ubicación (requiere dato)</li>
-                    </ul>
-                    
-                    <h6 class="mt-3">Ejemplo de petición con cURL:</h6>
-                    <pre class="bg-light p-3 rounded"><code>curl -X POST "<?= BASE_URL ?>?c=consumoApi&a=procesar" \
-  -d "token=tok_40a78860f5d858373341647213247af7-9" \
-  -d "tipo=listar_canchas"</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+     
 
 <script>
 // Mostrar/ocultar campo de datos según el tipo
