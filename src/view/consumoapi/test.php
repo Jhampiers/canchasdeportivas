@@ -13,19 +13,14 @@
                 </div>
                 <div class="card-body">
                     <form id="formTestAPI">
+
                         <div class="mb-3">
-                            <label for="token" class="form-label">Token *</label>
-                            <select class="form-select" id="token" name="token" required>
-                                <option value="">Seleccione un token...</option>
-                                <?php foreach ($tokens as $t): ?>
-                                    <?php if ($t['estado'] === 'Activo'): ?>
-                                        <option value="<?= htmlspecialchars($t['token']) ?>">
-                                            <?= htmlspecialchars($t['razon_social']) ?> - <?= htmlspecialchars($t['token']) ?>
-                                        </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+    <label for="token" class="form-label">Token *</label>
+    <input type="text" class="form-control" id="token" name="token" 
+           placeholder="Pega aquí tu token " required>
+    <small class="text-muted"></small>
+</div>
+
 
                         <div class="mb-3">
                             <label for="tipo" class="form-label">Tipo de Operación *</label>
@@ -59,8 +54,7 @@
         <div class="col-xl-6">
             <div class="card mb-4">
                 <div class="card-header bg-success text-white">
-                    <i class="fas fa-code me-1"></i>
-                    Respuesta JSON
+                    
                 </div>
                 <div class="card-body">
                     <div id="loading" style="display: none;" class="text-center py-4">
@@ -71,7 +65,7 @@
                     </div>
                     
                     <div id="resultado" class="bg-dark text-light p-3 rounded" style="min-height: 300px; font-family: monospace; font-size: 13px; overflow-x: auto;">
-                        <em class="text-muted">La respuesta aparecerá aquí...</em>
+                        <em class="text-muted"></em>
                     </div>
                 </div>
             </div>
@@ -127,7 +121,7 @@ document.getElementById('formTestAPI').addEventListener('submit', async function
 document.getElementById('btnLimpiar').addEventListener('click', function() {
     document.getElementById('formTestAPI').reset();
     document.getElementById('divData').style.display = 'none';
-    document.getElementById('resultado').innerHTML = '<em class="text-muted">La respuesta aparecerá aquí...</em>';
+    document.getElementById('resultado').innerHTML = '<em class="text-muted"></em>';
 });
 </script>
 
