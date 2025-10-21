@@ -171,7 +171,7 @@ class ConsumoApiController
     /**
      * Vista de prueba en el dashboard (solo para pruebas)
      */
-    public function vistaTest()
+    /** public function vistaTest()
     {
         // Verificar autenticación
         if (session_status() !== PHP_SESSION_ACTIVE) session_start();
@@ -184,5 +184,17 @@ class ConsumoApiController
         $tokens = Token::all();
         
         require __DIR__ . '/../view/consumoapi/test.php';
+    }  */
+public function vistaTest()
+    {
+        //  Ya no pedimos login ni sesión
+        $tokens = Token::all();
+
+        // Usa tu header y footer propios
+        require __DIR__ . '/../view/consumoapi/header_test.php';
+        require __DIR__ . '/../view/consumoapi/test.php';
+        require __DIR__ . '/../view/consumoapi/footer_test.php';
     }
+    
+
 }

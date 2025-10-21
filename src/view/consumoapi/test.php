@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../layout/header.php'; ?>
+
 
 <div class="container-fluid px-4">
     <h1 class="mt-4">Consumo API</h1>
@@ -73,7 +73,6 @@
     </div>
 
      
-
 <script>
 // Mostrar/ocultar campo de datos según el tipo
 document.getElementById('tipo').addEventListener('change', function() {
@@ -125,4 +124,4 @@ document.getElementById('btnLimpiar').addEventListener('click', function() {
 });
 </script>
 
-<?php require_once __DIR__ . '/../layout/footer.php'; ?>
+
