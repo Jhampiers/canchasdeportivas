@@ -11,7 +11,7 @@
       font-family: "Poppins", sans-serif;
     }
     header {
-      background-color: #007bff;
+      background-color:rgb(8, 48, 92);
       color: white;
       padding: 15px;
       text-align: center;
@@ -26,6 +26,6 @@
 </head>
 <body>
   <header>
-    API CANCHAS DEPORTIVAS
+    CANCHAS DEPORTIVAS
   </header>
   <main class="container">
