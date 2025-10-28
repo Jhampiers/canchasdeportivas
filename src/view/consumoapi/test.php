@@ -20,7 +20,7 @@
     <form id="formTestAPI" class="row g-3 align-items-end">
       <!-- Token oculto -->
       <input type="hidden" id="token" name="token"
-             value="tok_aa9c4f8c1e52e56075d640486fdf3c90-10">
+             value="tok_74cea3796bc80f577ddb9975e4e43399-9">
 
       <!-- Tipo de búsqueda -->
       <div class="col-md-5">
